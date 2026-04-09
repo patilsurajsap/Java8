@@ -3,6 +3,7 @@ package org.example;
 import com.java8.factory.StudentFactory;
 import com.java8.model.Student;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -24,5 +25,15 @@ public class StreamFilter {
 
             studentList.stream().filter(predicate)
                     .forEach(student -> System.out.println(student.getName()));
+
+        List<String> names = new ArrayList<>();
+
+        for(Student student : studentList){
+            if(student.getSpecilization().equals("Mathematics")){
+                names.add(student.getName());
+            }
+        }
+
+            names.forEach(name -> System.out.println(name));
     }
 }
