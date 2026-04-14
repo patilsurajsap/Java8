@@ -16,6 +16,7 @@ It’s mapper function produces multiple values
  for each value of input stream and those multiple values are flattened into a result Stream<R>.
 
  */
+
 public class StreamMapAndFlatMap {
 
     public static void main(String[] args) {
@@ -24,10 +25,17 @@ public class StreamMapAndFlatMap {
 
      List<String> collect = instituteFactory.getInstituteList().stream().map(institute -> {
             return institute.getName();
-        }).collect(Collectors.toUnmodifiableList());
+        }).peek(System.out::println)
+
+             .collect(Collectors.toUnmodifiableList());
 
     System.out.println(collect);
 
+        List<String> collect1 = instituteFactory.getInstituteList().stream().flatMap(institute -> {
+                return institute.getLocations().stream();
+            }).collect(Collectors.toUnmodifiableList());
+
+        System.out.println(collect1);
 
 
     }
