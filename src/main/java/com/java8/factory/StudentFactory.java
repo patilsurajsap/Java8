@@ -15,7 +15,7 @@ public class StudentFactory {
         studentList.add(new Student(2, "Jane Smith", "Mathematics"));
         studentList.add(new Student(3, "Alice Johnson", "Physics"));
         studentList.add(new Student(4, "Suraj Patil", "Mathematics"));
-        studentList.add(new Student(4, "Suraj Patil", "Mathematics"));
+        //studentList.add(new Student(4, "Suraj Patil", "Mathematics"));
 
     }
 
