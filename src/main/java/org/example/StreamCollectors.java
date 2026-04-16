@@ -17,12 +17,12 @@ public class StreamCollectors {
         // toMap method collects data into key value pair and store in map,
         // it takes two function as argument, first one is for key and second one is for value
 
-        System.out.println(studentFactory.getStudentList().stream().collect(Collectors
-                .toMap((student)->{
-                    return  student.getId();
-                }, (student -> {
-                    return student.getSpecilization();
-                }))));
+//        System.out.println(studentFactory.getStudentList().stream().collect(Collectors
+//                .toMap((student)->{
+//                    return  student.getId();
+//                }, (student -> {
+//                    return student.getSpecilization();
+//                }))));
 
 
         // toCollection() method
@@ -40,6 +40,14 @@ public class StreamCollectors {
         }));
 
        // System.out.println(collect1);
+
+
+      ///// Collectors.groupingBy() method
+        // groupingBy method is used to group data based on some criteria, it takes function as argument which is used to group data
+
+        Map<String, Long> collect2 = StudentFactory.getStudentList().stream().collect(Collectors.groupingBy(Student::getSpecilization, Collectors.counting()));
+
+        System.out.println(collect2);
 
     }
 }
