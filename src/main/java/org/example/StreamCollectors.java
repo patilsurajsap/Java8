@@ -3,8 +3,7 @@ package org.example;
 import com.java8.factory.StudentFactory;
 import com.java8.model.Student;
 
-import java.util.LinkedHashSet;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -47,7 +46,19 @@ public class StreamCollectors {
 
         Map<String, Long> collect2 = StudentFactory.getStudentList().stream().collect(Collectors.groupingBy(Student::getSpecilization, Collectors.counting()));
 
-        System.out.println(collect2);
+        //System.out.println(collect2);
 
+      //// Collectors.partitioningBy() method
+        // partitioningBy method is used to partition data based on some criteria, it takes predicate as argument which is used to partition data
+
+        Map<Boolean, Long> collect3 = StudentFactory.getStudentList().stream().collect(Collectors.partitioningBy(student -> student.getSpecilization().equals("Mathematics"), Collectors.counting()));
+
+        System.out.println(collect3);
+
+
+        Map<Boolean, List<Student>> mathematics = StudentFactory.getStudentList().stream().
+                collect(Collectors.partitioningBy(student -> student.getSpecilization().equals("Mathematics"), Collectors.toList()));
+
+        System.out.println(mathematics);
     }
 }
