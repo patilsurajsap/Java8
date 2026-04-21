@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class StreamCollectors {
 
     static StudentFactory studentFactory = new StudentFactory();
+
     public static void main(String[] args) {
 
         //////// toMap() method
@@ -28,27 +29,27 @@ public class StreamCollectors {
         // toCollection method collects data into a collection, it takes supplier as argument which is used
         LinkedHashSet<Student> collect = StudentFactory.getStudentList().stream().
                 collect(Collectors.toCollection(() -> {
-            return new LinkedHashSet<>();
-        }));
+                    return new LinkedHashSet<>();
+                }));
 
         //System.out.println(collect);
 
         LinkedHashSet<String> collect1 = StudentFactory.getStudentList().stream().map(Student::getName).
                 collect(Collectors.toCollection(() -> {
-            return new LinkedHashSet<>();
-        }));
+                    return new LinkedHashSet<>();
+                }));
 
-       // System.out.println(collect1);
+        // System.out.println(collect1);
 
 
-      ///// Collectors.groupingBy() method
+        ///// Collectors.groupingBy() method
         // groupingBy method is used to group data based on some criteria, it takes function as argument which is used to group data
 
         Map<String, Long> collect2 = StudentFactory.getStudentList().stream().collect(Collectors.groupingBy(Student::getSpecilization, Collectors.counting()));
 
         //System.out.println(collect2);
 
-      //// Collectors.partitioningBy() method
+        //// Collectors.partitioningBy() method
         // partitioningBy method is used to partition data based on some criteria, it takes predicate as argument which is used to partition data
 
         Map<Boolean, Long> collect3 = StudentFactory.getStudentList().stream().collect(Collectors.partitioningBy(student -> student.getSpecilization().equals("Mathematics"), Collectors.counting()));
