@@ -47,13 +47,17 @@ public class StreamCollectors {
 
         Map<String, Long> collect2 = StudentFactory.getStudentList().stream().collect(Collectors.groupingBy(Student::getSpecilization, Collectors.counting()));
 
-        //System.out.println(collect2);
+        System.out.println("==================Grouping By=====================");
+        System.out.println(collect2);
 
+        Map<String, List<Student>> collect4 = StudentFactory.getStudentList().stream().collect(Collectors.groupingBy(Student::getSpecilization, Collectors.toList()));
+        System.out.println(collect4);
         //// Collectors.partitioningBy() method
         // partitioningBy method is used to partition data based on some criteria, it takes predicate as argument which is used to partition data
 
         Map<Boolean, Long> collect3 = StudentFactory.getStudentList().stream().collect(Collectors.partitioningBy(student -> student.getSpecilization().equals("Mathematics"), Collectors.counting()));
 
+        System.out.println("==================Partitioning By=====================");
         System.out.println(collect3);
 
 
