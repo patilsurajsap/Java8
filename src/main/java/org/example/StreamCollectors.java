@@ -17,12 +17,14 @@ public class StreamCollectors {
         // toMap method collects data into key value pair and store in map,
         // it takes two function as argument, first one is for key and second one is for value
 
-//        System.out.println(studentFactory.getStudentList().stream().collect(Collectors
-//                .toMap((student)->{
-//                    return  student.getId();
-//                }, (student -> {
-//                    return student.getSpecilization();
-//                }))));
+        System.out.println("=====");
+        System.out.println(studentFactory.getStudentList().stream().collect(Collectors
+                .toMap((student)->{
+                    return  student.getId();
+                }, (student -> {
+                    return student.getSpecilization();
+                }))));
+        System.out.println("=====");
 
 
         // toCollection() method
@@ -45,17 +47,21 @@ public class StreamCollectors {
         ///// Collectors.groupingBy() method
         // groupingBy method is used to group data based on some criteria, it takes function as argument which is used to group data
 
-        Map<String, Long> collect2 = StudentFactory.getStudentList().stream().collect(Collectors.groupingBy(Student::getSpecilization, Collectors.counting()));
+        Map<String, Long> collect2 = StudentFactory.getStudentList().stream().
+                collect(Collectors.groupingBy(Student::getSpecilization, Collectors.counting()));
 
         System.out.println("==================Grouping By=====================");
         System.out.println(collect2);
 
-        Map<String, List<Student>> collect4 = StudentFactory.getStudentList().stream().collect(Collectors.groupingBy(Student::getSpecilization, Collectors.toList()));
+        Map<String, List<Student>> collect4 = StudentFactory.getStudentList().
+                stream().collect(Collectors.groupingBy(Student::getSpecilization, Collectors.toList()));
         System.out.println(collect4);
         //// Collectors.partitioningBy() method
         // partitioningBy method is used to partition data based on some criteria, it takes predicate as argument which is used to partition data
 
-        Map<Boolean, Long> collect3 = StudentFactory.getStudentList().stream().collect(Collectors.partitioningBy(student -> student.getSpecilization().equals("Mathematics"), Collectors.counting()));
+        Map<Boolean, Long> collect3 = StudentFactory.getStudentList().stream().
+                collect(Collectors.partitioningBy
+                        (student -> student.getSpecilization().equals("Mathematics"), Collectors.counting()));
 
         System.out.println("==================Partitioning By=====================");
         System.out.println(collect3);
