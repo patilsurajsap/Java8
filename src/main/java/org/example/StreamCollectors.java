@@ -68,7 +68,8 @@ public class StreamCollectors {
 
 
         Map<Boolean, List<Student>> mathematics = StudentFactory.getStudentList().stream().
-                collect(Collectors.partitioningBy(student -> student.getSpecilization().equals("Mathematics"), Collectors.toList()));
+                collect(Collectors.partitioningBy
+                        (student -> student.getSpecilization().equals("Mathematics"), Collectors.toList()));
 
         System.out.println(mathematics);
     }
