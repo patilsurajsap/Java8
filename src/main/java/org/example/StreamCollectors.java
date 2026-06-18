@@ -1,6 +1,7 @@
 package org.example;
 
 import com.java8.factory.StudentFactory;
+import com.java8.model.Employee;
 import com.java8.model.Student;
 
 import java.util.*;
@@ -72,5 +73,50 @@ public class StreamCollectors {
                         (student -> student.getSpecilization().equals("Mathematics"), Collectors.toList()));
 
         System.out.println(mathematics);
+
+        System.out.println("================== Averaging =====================");
+
+        double avaerage = StudentFactory.getStudentList().stream().collect(Collectors.averagingInt(Student::getId)
+                ).doubleValue();
+        System.out.println("average :: " + avaerage);
+
+
+
+
+        //---------------------- Employee List ------------------
+
+        List<Employee> employees = Arrays.asList(
+                new Employee("Alice", "IT", 120000, 30),
+                new Employee("Bob", "IT", 95000, 26),
+                new Employee("Charlie", "HR", 70000, 45),
+                new Employee("David", "HR", 80000, 35),
+                new Employee("Eve", "Finance", 140000, 40)
+        );
+
+        // group empoyee names by department
+        Map<String, List<String>> employeeNamesByDepartment = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,
+                Collectors.mapping(Employee::getName, Collectors.toList())));
+        System.out.println("============================= Employee Names by Department =============================");
+        System.out.println("Employee Names by Department: " + employeeNamesByDepartment);
+
+
+        Map<String, Optional<Employee>> collect5 = employees.stream().collect(Collectors.groupingBy(
+                emp -> emp.getDepartment(),
+                Collectors.maxBy(Comparator.comparing(Employee::getSalary)))
+        );
+        System.out.println("Employee Names by Department: " + collect5);
+
+
+
+        //============Collectors.joining() method
+        // this returns only string/charsequence array object
+
+        String collect6 = employees.stream().map(emp -> {
+            return emp.getName();
+        }).collect(Collectors.joining("|", "[", "]"));
+
+        System.out.println("============================= Joining Employee Names =============================");
+        System.out.println("Joined Employee Names: " + collect6);
+
     }
 }
