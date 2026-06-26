@@ -43,5 +43,6 @@ public class ThreadLocalExample {
 
     static void  print( ThreadLocal threadLocal){
         System.out.println("print ::  " + threadLocal.get());
+
     }
 }
