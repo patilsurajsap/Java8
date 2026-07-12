@@ -118,5 +118,8 @@ public class StreamCollectors {
         System.out.println("============================= Joining Employee Names =============================");
         System.out.println("Joined Employee Names: " + collect6);
 
+
+        Employee employee = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(1).findFirst().get();
+        System.out.println("Employee with second highest salary: " + employee.getName() + " - " + employee.getSalary());
     }
 }
