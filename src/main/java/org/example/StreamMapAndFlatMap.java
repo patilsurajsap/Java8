@@ -25,7 +25,7 @@ public class StreamMapAndFlatMap {
 
      List<String> collect = instituteFactory.getInstituteList().stream().map(institute -> {
             return institute.getName();
-        }).peek(System.out::println)
+        })//.peek(System.out::println)
 
              .collect(Collectors.toUnmodifiableList());
 
