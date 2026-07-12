@@ -7,6 +7,7 @@ import com.java8.model.Student;
 import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamCollectors {
 
@@ -121,5 +122,10 @@ public class StreamCollectors {
 
         Employee employee = employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(1).findFirst().get();
         System.out.println("Employee with second highest salary: " + employee.getName() + " - " + employee.getSalary());
+
+
+        String tt = "erwe";
+        Stream.of(tt.split("")).collect(Collectors.groupingBy(s -> s, Collectors.counting()))
+                .entrySet().stream().filter(entry -> entry.getValue() > 1).forEach(entry -> System.out.println(entry.getKey() + " : " + entry.getValue()));
     }
 }
