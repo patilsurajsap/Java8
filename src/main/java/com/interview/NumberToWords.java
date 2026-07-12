@@ -1,6 +1,7 @@
 package com.interview;
 
 import java.time.Duration;
+import java.util.HashMap;
 
 public class NumberToWords {
     private static final String[] UNITS = {
@@ -37,14 +38,44 @@ public class NumberToWords {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        int num = 1245786453;
-        System.out.println(convert(num)); // Outputs: One Hundred Twenty Three
+//        int num = 1245786453;
+//        System.out.println(convert(num)); // Outputs: One Hundred Twenty Three
+//
+//        while(true){
+//            Thread.sleep(Duration.ofSeconds(2));
+//            System.out.println("Tests   ");
+//            String str = new String("JAva");
+//        }
 
-        while(true){
-            Thread.sleep(Duration.ofSeconds(2));
-            System.out.println("Tests   ");
-            String str = new String("JAva");
+
+        String str = "aaaaaaabbaaaaccccbbbbcccccbcc";
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        int j=0;
+        int count = 0;
+        for(int i = 0; i < str.length()-1; i++){
+            j=i;
+
+            while( j<str.length() && str.charAt(i) == str.charAt(j) ){
+                count++;
+                j++;
+            }
+
+            if(map.containsKey(str.charAt(i))){
+                if (map.get(str.charAt(i)) < count) {
+                    map.put(str.charAt(i), count);
+                }
+            } else {
+                map.put(str.charAt(i), count);
+            }
+
+            count=0;
+            i=j-1;
+
         }
+
+        System.out.println(map);
     }
 
 
