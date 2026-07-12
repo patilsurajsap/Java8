@@ -1,7 +1,9 @@
 package com.interview;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class NumberToWords {
     private static final String[] UNITS = {
@@ -76,6 +78,21 @@ public class NumberToWords {
         }
 
         System.out.println(map);
+
+
+        boolean isPrime = true;
+        List<String> list = new ArrayList<>();
+        list.add("Test1");
+        list.add("Test2");
+
+        for(int i=0;i<list.size();i++){
+            if(isPrime){
+                list.add("Test3");
+                isPrime = false;
+
+            }
+            System.out.println(list.get(i));
+        }
     }
 
 

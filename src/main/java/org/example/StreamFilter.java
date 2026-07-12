@@ -21,7 +21,7 @@ public class StreamFilter {
                 .forEach(student -> System.out.println(student.getName()));
 
 
-        Predicate<Student> predicate =  student -> student.getSpecilization().equals("Mathematics");
+        Predicate<Student> predicate =  (student -> student.getSpecilization().equals("Mathematics"));
 
             studentList.stream().filter(predicate)
                     .forEach(student -> System.out.println(student.getName()));
