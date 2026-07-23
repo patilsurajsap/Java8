@@ -108,6 +108,10 @@ public class StreamCollectors {
         System.out.println("Employee Names by Department: " + collect5);
 
 
+        //get second highest salary employee in each departmen
+        // studentFactory.getStudentList().stream().sorted((s1, s2) -> s1.getName().length() - s2.getName().length())
+        //                .forEach(student -> System.out.println(student.getName()));
+
 
         //============Collectors.joining() method
         // this returns only string/charsequence array object

@@ -1,6 +1,9 @@
 package org.example;
 
 import com.java8.factory.StudentFactory;
+import com.java8.model.Student;
+
+import java.util.Comparator;
 
 public class StreamSorted {
 
@@ -17,5 +20,13 @@ public class StreamSorted {
 
         studentFactory.getStudentList().stream().sorted((s1, s2) -> s1.getName().length() - s2.getName().length())
                 .forEach(student -> System.out.println(student.getName()));
+
+        System.out.println("==================================");
+        studentFactory.getStudentList().stream().sorted(Comparator.comparing(Student::getName))
+                .forEach(student -> System.out.println(student.getName()));
+
+        System.out.println("==================================");
+        studentFactory.getStudentList().stream().sorted(Comparator.comparing(Student::getName).reversed())
+                .forEach(System.out::println);
     }
 }
