@@ -105,7 +105,23 @@ public class StreamCollectors {
                 emp -> emp.getDepartment(),
                 Collectors.maxBy(Comparator.comparing(Employee::getSalary)))
         );
-        System.out.println("Employee Names by Department: " + collect5);
+        System.out.println("************ Employee Names by Department: " + collect5);
+
+
+        Map<String, List<Employee>> employeesByDeptSortedBySalary = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                list -> {
+                                    list.sort(Comparator.comparingDouble(Employee::getSalary));
+                                    return list;
+                                }
+                        )
+                ));
+
+        System.out.println("============================= Get list department wise and sorted by salary asc =============================");
+        System.out.println("Emplyee List: " + employeesByDeptSortedBySalary);
 
 
         //get second highest salary employee in each departmen
