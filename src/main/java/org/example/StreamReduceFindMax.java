@@ -14,7 +14,11 @@ public class StreamReduceFindMax {
         OptionalInt min = Arrays.stream(arr).reduce( (a, b) -> a < b ? a : b);
 
         OptionalInt min1 = Arrays.stream(arr).min();
+        OptionalInt min2 = Arrays.stream(arr).reduce(Math::min);
 
-        System.out.println(max + ":" + min.getAsInt() + ":" + min1.getAsInt());
+        System.out.println(max + ":" + min.getAsInt() + ":" + min1.getAsInt() + ":" + min2.getAsInt());
+
+
+
     }
 }
