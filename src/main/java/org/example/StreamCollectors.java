@@ -147,5 +147,10 @@ public class StreamCollectors {
         String tt = "erwe";
         Stream.of(tt.split("")).collect(Collectors.groupingBy(s -> s, Collectors.counting()))
                 .entrySet().stream().filter(entry -> entry.getValue() > 1).forEach(entry -> System.out.println(entry.getKey() + " : " + entry.getValue()));
+
+        Map<String, Long> collect7 = Stream.of(tt.split("")).collect(Collectors.groupingBy(s -> s, Collectors.counting()))
+                .entrySet().stream().filter(entry -> entry.getValue() > 1).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        System.out.println();
     }
 }
